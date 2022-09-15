@@ -1,0 +1,154 @@
+const { query } = require("express");
+const admin = require("firebase-admin");
+const serviceAccount = require("../../database/test-c95d5-firebase-adminsdk-9iqoe-ae20f85e08.json");
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+})
+
+
+class ContenedorFirebase{
+    constructor(coleccion){
+        this.coleccion = coleccion;
+    }
+
+    async getAll(){
+        try {    
+            const db = admin.firestore();
+            let query = db.collection(this.coleccion);
+            const queryRead = await query.get();
+            const respuesta = queryRead.docs.map((document)=>({id: document.id, ...document.data()}));
+            return respuesta;
+        } catch (error) {
+            console.log("Error al buscar los datos", error);
+            return [];
+        } 
+    }
+
+    async getById(id){
+        try {
+            const db = admin.firestore();
+            let query = db.collection(this.coleccion);
+            const doc = query.doc(id);
+            const queryReadOne = await doc.get();
+            const respuesta = {id: queryReadOne.id, ...queryReadOne.data()};
+
+            return respuesta;
+        } catch (error) {
+            console.log("Error al buscar los datos", error);
+            return [];
+        } 
+    }
+
+    async save(document){
+        try {
+            const db = admin.firestore();
+            let query = db.collection(this.coleccion);
+
+        //let id = 1;
+        const doc = query.doc();
+        const respuesta = await doc.create(document)
+
+
+            
+            return respuesta;
+        } catch (error) {
+            console.log("Error al insertar los datos", error);
+            return null;
+        } 
+    }
+
+    async updateById(id, document){
+        try {
+            const db = admin.firestore();
+            let query = db.collection(this.coleccion);
+
+
+            const doc = query.doc(id);
+                      const item = await doc.update(document);
+
+
+            
+            return item;
+        } catch (error) {
+            console.log("Error al insertar los datos", error);
+            return null;
+        } 
+    }
+
+
+
+    async deleteById(id){
+        try {
+            const db = admin.firestore();
+            let query = db.collection(this.coleccion);
+
+
+            const doc = query.doc(id);
+                      const item = await doc.delete();
+
+
+            
+            return item;
+        } catch (error) {
+            console.log("Error al insertar los datos", error);
+            return null;
+        } 
+    }
+
+
+
+}
+
+
+
+module.exports = ContenedorFirebase;
+
+
+// const CRUD = async ()=>{
+//     const db = admin.firestore();
+//     let query = db.collection("usuarios");
+
+//     try {
+//         // let id = 1;
+//         // const doc = query.doc(`${id}`);
+//         // await doc.create({
+//         //     nombre: "jose",
+//         //     apellido: "perez",
+//         //     edad: 20,
+//         //     email: "j@gmail.com"
+
+//         // })
+
+
+//         // update
+//         // const id = "1";
+//         // const doc = query.doc(id);
+//         // const item = await doc.update({
+//         //     name: "JOSE"
+//         // });
+
+
+//         // delete
+//         // const id = "1";
+//         // const doc = query.doc(id)
+//         // const item = await doc.delete();
+
+
+
+//         // leer todos
+//         // const queryRead = await query.get();
+//         // const respuesta = queryRead.docs.map((document)=>({id: document.id, ...document.data()}));
+//         // console.log(respuesta)
+
+//         const queryReadOne = await query.get("1");
+//         const respuesta = {id: queryReadOne.id, ...queryReadOne.data()};
+//         console.log(respuesta)
+
+//     } catch (error) {
+//         console.log(error);   
+//     }
+
+// }
+
+// CRUD();

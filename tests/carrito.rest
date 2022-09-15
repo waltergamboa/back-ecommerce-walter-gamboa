@@ -1,5 +1,26 @@
-#GET http://localhost:8080/api/carrito HTTP/1.1
 
+GET http://localhost:8080/api/carrito HTTP/1.1
+
+#GET http://localhost:8080/api/carrito/632380de2a5ab8df7ddcb92c HTTP/1.1
+
+
+# POST http://localhost:8080/api/carrito HTTP/1.1
+# content-type: application/json
+
+# bases
+# POST http://localhost:8080/api/carrito HTTP/1.1
+# content-type: application/json
+
+# {
+#     "idcarrito": 1,
+#     "idproducto": 1,
+#     "nombre": "Manzana",
+#     "precio": 12, 
+#     "cantidad": 100
+# }
+
+
+# Archivo
 # POST http://localhost:8080/api/carrito HTTP/1.1
 # content-type: application/json
 
@@ -26,6 +47,23 @@
 # }]
 # }
 
+
+#bases
+
+# PUT http://localhost:8080/api/carrito/632380de2a5ab8df7ddcb92c HTTP/1.1
+#  content-type: application/json
+
+#  {
+#      "idcarrito": 1,
+#      "idproducto": 11,
+#      "nombre": "Manzanaa",
+#      "precio": 12, 
+#      "cantidad": 100
+#  }
+
+
+
+# archivo
 # PUT http://localhost:8080/api/carrito/2 HTTP/1.1
 # content-type: application/json
 
@@ -55,7 +93,6 @@
 #     ]
 # }
 
-#DELETE http://localhost:8080/api/carrito/1 HTTP/1.1
+#DELETE http://localhost:8080/api/carrito/632380de2a5ab8df7ddcb92c HTTP/1.1
 
-# DELETE http://localhost:8080/api/carrito/2/productos/2 HTTP/1.1
 

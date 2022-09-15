@@ -6,6 +6,55 @@ const dotenv = require('dotenv');
 const routerProductos = require('./routes/producto.routes');
 const routerCarrito = require('./routes/carrito.routes');
 
+//const ProductosApi = require("./src/daos/ProductosDaoMongoDB");
+//const productosApi = new ProductosApi();
+
+
+const test = async ()=>{
+  //const ProductosApi = require("./src/daos/ProductosDaoFirebase");
+  //const productosApi = new ProductosApi("productos");
+
+const { productosDao: productosApi } = require("./src/daos/index.js")
+
+  const a = {
+    nombre: "aaanaranjaconindex",
+    descripcion: "aaanaranjasconindex", 
+    codigo: "mz1", 
+    foto: "https://media.istockphoto.com/photos/red-apple-picture-id184276818?k=20&m=184276818&s=612x612&w=0&=QxOcueqAUVTdiJ7DVoCu-BkNCIuwliPEgtAQhgvBA_g=", 
+   precio: 12, 
+   stock: 100
+}
+ 
+//const documents = await productosApi.getAll().then((data)=>data);
+const documents = await productosApi.save(a).then((data)=>data);
+
+
+
+//get all
+//const documents = await productosApi.getAll();
+
+//get by id
+//const documents = await productosApi.getById("1");
+
+//delete
+//const documents = await productosApi.deleteById("1");
+
+// const a = {
+//   nombre: "JOSE",
+//   apellido: "perez",
+//   edad: 20,
+//   email: "j@gmail.com"
+
+// }
+
+// const documents = await productosApi.updateById("1", a);
+  console.log(documents);
+  
+}
+
+//test();
+
+
 /* ------------------------------- inicializar ------------------------------ */
 const app = express();
 app.use(express.json());

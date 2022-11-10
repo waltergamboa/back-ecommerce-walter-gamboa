@@ -29,16 +29,35 @@ const renderProductos = (productos)=>{
 
 
 const renderMensajes = (chat)=>{
+    console.log(JSON.stringify(chat).length);
+    // normalizacion
+    const authorSchema = new normalizr.schema.Entity('author', {}, {idAttribute: "id"});
+    const commentSchema = new normalizr.schema.Entity('text');
+    const postSchema =[{
+        author: authorSchema,
+        texto: commentSchema
+    }]
+
+    const denormalizedChat = normalizr.denormalize(chat.result, postSchema, chat.entities);
+
+    console.log(JSON.stringify(denormalizedChat).length);
+    
+
     const divMensajes = document.querySelector("#mensajes");
     let html = `<ul>`
 
-    chat.map(item=>{
-        html = html + `<li><span class="mensajeMail">${item.mail}</span><span class="mensajeFechaHora">[${item.fechahora}]:</span><span class="mensajeTexto">${item.mensaje}</span></li>`;
+    denormalizedChat.map(item=>{
+        html = html + `<li><span class="mensajeMail">${item.author.id}</span><span class="mensajeFechaHora">[${item.fechahora}]:</span><span class="mensajeTexto">${item.text}</span></li>`;
     })
 
     html = html + `</ul>`
 
     divMensajes.innerHTML = html;
+
+    const calculoPorcentaje = (Number(JSON.stringify(chat).length)) * 100 / Number(JSON.stringify(denormalizedChat).length) 
+
+    document.querySelector("#porcentaje").innerHTML = `Porcentaje de Compresion ${parseInt(calculoPorcentaje)} %`;
+
 }
 
 
@@ -55,10 +74,17 @@ const agregarProducto = (evt)=>{
 const agregarChat = (evt)=>{
     try {
         const mail = document.querySelector("#mail").value;
+        const nombre = document.querySelector("#nombreChat").value;
+        const apellido = document.querySelector("#apellido").value;                
+        const edad = document.querySelector("#edad").value;
+        const alias = document.querySelector("#alias").value;                
+        const avatar = document.querySelector("#avatar").value;                        
         const mensaje = document.querySelector("#mensaje").value;
 
-        const chat = {mail, mensaje};
+        const chat = { mail, nombre, apellido, edad, alias, avatar, mensaje };
+//console.log("chat", chat)        
         server.emit("chat-nuevo", chat);
+
         document.querySelector("#mensaje").value = "";
         document.querySelector("#mensaje").focus();
         return false; 

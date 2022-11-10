@@ -3,6 +3,8 @@ const { Router } = express;
 
 const { productosDao: productosApi } = require("../src/daos/index.js");
 
+const { logger, loggerWarn, loggerError } = require("../logger");
+
 const getTimestamp = ()=>{
   return Date.now();
 }

@@ -2,17 +2,17 @@
 
 #GET http://localhost:8080/api/productos/63271782dbaf8ddb18bc9f9f HTTP/1.1
 
-# POST http://localhost:8080/api/productos HTTP/1.1
-# content-type: application/json
+#  POST http://localhost:8080/api/productos HTTP/1.1
+#  content-type: application/json
 
-# {
-#     "nombre": "222Manzana22222f",
-#     "descripcion": "222Manzanas2222firebase", 
-#     "codigo": "mz1", 
-#     "foto": "https://media.istockphoto.com/photos/red-apple-picture-id184276818?k=20&m=184276818&s=612x612&w=0&h=QxOcueqAUVTdiJ7DVoCu-BkNCIuwliPEgtAQhgvBA_g=", 
-#     "precio": 12, 
-#     "stock": 100
-# }
+#  {
+#      "nombre": "222Manzana22222f",
+#      "descripcion": "222Manzanas2222firebase", 
+#      "codigo": "mz1", 
+#      "foto": "https://media.istockphoto.com/photos/red-apple-picture-id184276818?k=20&m=184276818&s=612x612&w=0&h=QxOcueqAUVTdiJ7DVoCu-BkNCIuwliPEgtAQhgvBA_g=", 
+#      "precio": 12, 
+#      "stock": 100
+#  }
 
 
 #  PUT http://localhost:8080/api/productos/63271782dbaf8ddb18bc9f9f HTTP/1.1

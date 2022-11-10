@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="/socket.io/socket.io.js"></script>    
-    <title>Websockets</title>
+    <title>Login</title>
   </head>
   <body>
     <%- include("../partials/header.ejs") %>
@@ -76,6 +76,7 @@
     </div>
 
     <h2>Centro de Mensajes</h2>
+    <h3 id="porcentaje"></h3>    
     <div style="width: 70%; margin: 0 auto">
       <form onsubmit="return agregarChat(this)">
         <div class="mb-3">
@@ -88,6 +89,57 @@
             required
           />
         </div>
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="nombreChat"
+            id = "nombreChat"
+            placeholder="nombre"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="apellido"
+            id = "apellido"
+            placeholder="apellido"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            type="number"
+            class="form-control"
+            name="edad"
+            id = "edad"
+            placeholder="edad"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="alias"
+            id = "alias"
+            placeholder="alias"
+            required
+          />
+        </div>        
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="avatar"
+            id = "avatar"
+            placeholder="avatar"
+            required
+          />
+        </div>        
+
         <hr>
 
 
@@ -119,6 +171,7 @@
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js"></script>
     <script src="/js/index.js"></script>
   </body>
 </html>

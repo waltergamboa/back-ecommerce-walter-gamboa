@@ -3,6 +3,8 @@ const { Router } = express;
 
 const { carritoDao: carritoApi } = require("../src/daos/index.js");
 
+const { logger, loggerWarn, loggerError } = require("../logger");
+
 const getTimestamp = ()=>{
   return Date.now();
 }

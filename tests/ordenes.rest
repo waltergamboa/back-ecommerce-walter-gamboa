@@ -1,0 +1,34 @@
+
+GET http://localhost:8080/ordenes HTTP/1.1
+###
+POST http://localhost:8080/ordenes HTTP/1.1
+content-type: application/json
+
+{
+    "email": "uno@gmail.com",
+    "estado": "guardada",
+    "items": [{
+    "idproducto": "1",
+    "descripcion": "manzana",
+    "cantidad": 20,
+    "precio": 120
+    }]
+}
+###
+PUT http://localhost:8080/ordenes/1 HTTP/1.1
+content-type: application/json
+
+{
+    "email": "uno@gmail.com",
+    "estado": "guardada",    
+    "items": [{
+    "idproducto": "1",
+    "descripcion": "manzana",
+    "cantidad": 10,
+    "precio": 120
+    }]
+}
+###
+DELETE http://localhost:8080/ordenes/1 HTTP/1.1
+
+

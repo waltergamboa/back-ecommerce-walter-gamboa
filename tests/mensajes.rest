@@ -1,0 +1,21 @@
+GET http://localhost:8080/mensajes HTTP/1.1
+###
+POST http://localhost:8080/mensajes HTTP/1.1
+content-type: application/json
+
+{
+    "email": "uno@gmail.com", 
+    "tipo": "usuarios",
+    "fyh": "20/12/2022 19:19:12",
+    "cuerpomensaje": "prueba cuerpo mensaje"
+}
+###
+PUT http://localhost:8080/mensajes/63b1e5d73a07feb99a6fa536 HTTP/1.1
+content-type: application/json
+
+ {
+    "cuerpomensaje": "prueba cuerpo mensaje modificado"
+}
+###
+DELETE http://localhost:8080/mensajes/63b0843c1ee053e30bfdc845 HTTP/1.1
+

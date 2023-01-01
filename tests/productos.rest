@@ -1,34 +1,26 @@
-# GET http://localhost:8080/api/productos HTTP/1.1
+GET http://localhost:8080/productos HTTP/1.1
+###
+GET http://localhost:8080/productos/frutas HTTP/1.1
+###
+POST http://localhost:8080/productos HTTP/1.1
+content-type: application/json
 
-#GET http://localhost:8080/api/productos/63271782dbaf8ddb18bc9f9f HTTP/1.1
+{
+    "descripcion": "222Manzanas2222firebase", 
+    "categoria": "frutas",
+    "precio": 12,       
+    "imagen": "https://media.istockphoto.com/photos/red-apple-picture-id184276818?k=20&m=184276818&s=612x612&w=0&h=QxOcueqAUVTdiJ7DVoCu-BkNCIuwliPEgtAQhgvBA_g="
+}
+###
+PUT http://localhost:8080/productos/63ab2761295d8470ca987f5b HTTP/1.1
+content-type: application/json
 
-#  POST http://localhost:8080/api/productos HTTP/1.1
-#  content-type: application/json
-
-#  {
-#      "nombre": "222Manzana22222f",
-#      "descripcion": "222Manzanas2222firebase", 
-#      "codigo": "mz1", 
-#      "foto": "https://media.istockphoto.com/photos/red-apple-picture-id184276818?k=20&m=184276818&s=612x612&w=0&h=QxOcueqAUVTdiJ7DVoCu-BkNCIuwliPEgtAQhgvBA_g=", 
-#      "precio": 12, 
-#      "stock": 100
-#  }
-
-
-#  PUT http://localhost:8080/api/productos/63271782dbaf8ddb18bc9f9f HTTP/1.1
-#  content-type: application/json
-
-# {
-#     "nombre": "ManzanaModificadoMongoDB",
-#     "descripcion": "ManzanasModificadoMongoDB", 
-#     "codigo": "MZ1", 
-#     "foto": "https://media.istockphoto.com/photos/red-apple-picture-id184276818?k=20&m=184276818&s=612x612&w=0&h=QxOcueqAUVTdiJ7DVoCu-BkNCIuwliPEgtAQhgvBA_g=", 
-#     "precio": 120, 
-#     "stock": 100
-# }
-
-
-# DELETE http://localhost:8080/api/productos/63271782dbaf8ddb18bc9f9f HTTP/1.1
-
-
+ {
+    "descripcion": "222Manzanas2222firebase", 
+    "categoria": "frutas",
+    "precio": 123,       
+    "imagen": "https://media.istockphoto.com/photos/red-apple-picture-id184276818?k=20&m=184276818&s=612x612&w=0&h=QxOcueqAUVTdiJ7DVoCu-BkNCIuwliPEgtAQhgvBA_g="
+ }
+###
+DELETE http://localhost:8080/productos/1 HTTP/1.1
 

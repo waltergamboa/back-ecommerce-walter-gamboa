@@ -1,103 +1,92 @@
 const server = io().connect();
+const admin = document.querySelector("#admin").value;
 
-const renderProductos = (productos)=>{
-    const divProductos = document.querySelector("#productos");
-    let html = `<div class="row">`
-
-    productos.map(prod=>{
-        html = html + `<div class="col-3">
-        <div class="card text-black bg-light border-light w-120 m-3"><div class="card-header">${prod.nombre}</div>
-        <div class="card-body" style="text-align: center;">
-        <img src=${prod.imagen} style="width: 200px; height: 200px; object-fit: cover;"></img>
-        <p class="card-text">
-          $ ${prod.precio} 
-        </p>
-      </div>
-      <div class="card-footer" style="text-align: right">
-      <p>
-      </p>
-    </div>
-    </div>
-    </div>`;
-    })
-
-    html = html + `</div>`
-
-    divProductos.innerHTML = html;
-
+const cambioMail = (evt)=>{
+    document.querySelector("#mail").value = evt.value;
 }
 
 
-const renderMensajes = (chat)=>{
-    console.log(JSON.stringify(chat).length);
-    // normalizacion
-    const authorSchema = new normalizr.schema.Entity('author', {}, {idAttribute: "id"});
-    const commentSchema = new normalizr.schema.Entity('text');
-    const postSchema =[{
-        author: authorSchema,
-        texto: commentSchema
-    }]
+const renderMensajes = (chat) => {
 
-    const denormalizedChat = normalizr.denormalize(chat.result, postSchema, chat.entities);
+  const divMensajes = document.querySelector("#mensajes");
+  let html = `<ul>`;
 
-    console.log(JSON.stringify(denormalizedChat).length);
+  let html2 = `<table class="table table-light">
+                <thead>
+                <tr>
+                <th scope="col">email</th>
+                <th scope="col">fyh</th>
+                <th scope="col">mensaje</th>
+                ${(admin == "true") ? `<th scope="col">Responder</th>` : null}
+                </tr>
+                </thead>
+                <tbody>`;
+
+  chat.map((item) => {
+    html =
+      html +
+      `<li><span class="mensajeMail">${item.email}</span><span class="mensajeFechaHora">[${item.fyh}]:</span><span class="mensajeTexto">${item.cuerpomensaje}</span></li>`;
+
+    html2 = html2 + `<tr>`;
+    html2 = html2 + `<td class="mensajeMail">${item.email}</td>`;
+    html2 = html2 + `<td class="mensajeFechaHora">${item.fyh}</td>`;
+    html2 = html2 + `<td class=${(item.tipo == "usuarios") ? "mensajeTexto" : ""}>${item.cuerpomensaje}</td>`;
+    if (admin == "true")
+    html2 = html2 + `<td><input type="radio" id='optradio' name="optradio" value=${item.email} onClick=cambioMail(this)></td>`;
     
+    html2 = html2 + `</tr>`;
+  });
 
-    const divMensajes = document.querySelector("#mensajes");
-    let html = `<ul>`
+  html = html + `</ul>`;
 
-    denormalizedChat.map(item=>{
-        html = html + `<li><span class="mensajeMail">${item.author.id}</span><span class="mensajeFechaHora">[${item.fechahora}]:</span><span class="mensajeTexto">${item.text}</span></li>`;
-    })
+  html2 = html2 + `</tbody></table>`;
 
-    html = html + `</ul>`
+  divMensajes.innerHTML = html2;
+};
 
-    divMensajes.innerHTML = html;
+const agregarChat = (evt) => {
+  try {
+    const mail = document.querySelector("#mail").value;
+    const mensaje = document.querySelector("#cuerpomensaje").value;
 
-    const calculoPorcentaje = (Number(JSON.stringify(chat).length)) * 100 / Number(JSON.stringify(denormalizedChat).length) 
-
-    document.querySelector("#porcentaje").innerHTML = `Porcentaje de Compresion ${parseInt(calculoPorcentaje)} %`;
-
-}
+   // const optradio = document.querySelector("#optradio").selected;
 
 
-const agregarProducto = (evt)=>{
-    const nombre = document.querySelector("#nombre").value;
-    const precio = document.querySelector("#precio").value;
-    const imagen = document.querySelector("#imagen").value;
+  //  console.log(optradio)
 
-    const producto = {nombre, precio, imagen};
-    server.emit("producto-nuevo", producto);
+    const tipo = (admin == "true") ? "sistema" : "usuarios";
+
+    const chat = { mail, tipo, mensaje };
+ 
+    server.emit("chat-nuevo", chat);
+
+    document.querySelector("#cuerpomensaje").value = "";
+    document.querySelector("#cuerpomensaje").focus();
     return false;
-}
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-const agregarChat = (evt)=>{
-    try {
-        const mail = document.querySelector("#mail").value;
-        const nombre = document.querySelector("#nombreChat").value;
-        const apellido = document.querySelector("#apellido").value;                
-        const edad = document.querySelector("#edad").value;
-        const alias = document.querySelector("#alias").value;                
-        const avatar = document.querySelector("#avatar").value;                        
-        const mensaje = document.querySelector("#mensaje").value;
+const mismensajes = document.querySelector("#mismensajes").value;
+const mail = String(document.querySelector("#mail").value);
 
-        const chat = { mail, nombre, apellido, edad, alias, avatar, mensaje };
-//console.log("chat", chat)        
-        server.emit("chat-nuevo", chat);
-
-        document.querySelector("#mensaje").value = "";
-        document.querySelector("#mensaje").focus();
-        return false; 
-            
-    } catch (error) {
-        console.log(error)        
+server.on("mensaje-chat", (obj) => {
+  let chat = [];
+  chat = obj;
+  if (mismensajes != "false") {
+    if (String(mail) != String(mismensajes)) {
+      console.log("solo puedes filtrar tus mensajes");
+      chat = [];
+    } else {
+      chat = [];
+      obj.map((item) => {
+        if (String(item.email) == mail) {
+          chat.push(item);
+        }
+      });
     }
-}
+  }
 
-server.on("mensaje-productos", (productos)=>{
-    renderProductos(productos);
-})
-
-server.on("mensaje-chat", (chat)=>{
-    renderMensajes(chat);
-})
+  renderMensajes(chat);
+});

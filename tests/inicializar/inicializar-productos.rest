@@ -1,0 +1,92 @@
+POST http://localhost:8080/productos HTTP/1.1
+content-type: application/json
+
+{
+    "descripcion": "manzana", 
+    "categoria": "frutas",
+    "precio": 10,       
+    "imagen": "https://media.istockphoto.com/photos/red-apple-picture-id184276818?k=20&m=184276818&s=612x612&w=0&h=QxOcueqAUVTdiJ7DVoCu-BkNCIuwliPEgtAQhgvBA_g="
+}
+###
+POST http://localhost:8080/productos HTTP/1.1
+content-type: application/json
+
+{
+    "descripcion": "naranja", 
+    "categoria": "frutas",
+    "precio": 20,       
+    "imagen": "https://media.istockphoto.com/id/185284489/es/foto/naranja.jpg?s=612x612&w=0&k=20&c=V_kmzGGofV9oTdQMU-SfT4Y9n3q9ksFZliED5O_eYPE="
+}
+
+###
+POST http://localhost:8080/productos HTTP/1.1
+content-type: application/json
+
+{
+    "descripcion": "anana", 
+    "categoria": "frutas",
+    "precio": 30,       
+    "imagen": "https://media.istockphoto.com/id/172862474/es/foto/pi%C3%B1a-maduro-frutas-frescas-de-alimentaci%C3%B3n-conjunto-aislado-en-blanco.jpg?s=1024x1024&w=is&k=20&c=tniB9UijKXEN5iCYq2ZCuf2E4fIjgKDFCio2mH1E39A="
+}
+###
+POST http://localhost:8080/productos HTTP/1.1
+content-type: application/json
+
+{
+    "descripcion": "coliflor", 
+    "categoria": "vegetales",
+    "precio": 10,       
+    "imagen": "https://media.istockphoto.com/id/511868689/es/foto/coliflor-frescos-con-piezas-aisladas-en-blanco.jpg?s=1024x1024&w=is&k=20&c=KLzsObsnt0tmzKyuIpNLjAWGEL-wlh8yzc0CYi57zdw="
+}
+###
+POST http://localhost:8080/productos HTTP/1.1
+content-type: application/json
+
+{
+    "descripcion": "morron", 
+    "categoria": "vegetales",
+    "precio": 20,       
+    "imagen": "https://media.istockphoto.com/id/628582556/es/foto/pimiento-morron-rojo.jpg?s=612x612&w=0&k=20&c=leM7Ve3MygJtieSWNkC3Nib9Iar7JbS99QmnMftg4ZI="
+}
+
+###
+POST http://localhost:8080/productos HTTP/1.1
+content-type: application/json
+
+{
+    "descripcion": "radicheta", 
+    "categoria": "vegetales",
+    "precio": 30,       
+    "imagen": "https://media.istockphoto.com/id/512209486/photo/escarole-endive.jpg?s=612x612&w=0&k=20&c=ChJlM7IPzW9-rhcAh_8QrC86yZkKk9wQ1PlCZ1apybk="
+}
+###
+POST http://localhost:8080/productos HTTP/1.1
+content-type: application/json
+
+{
+    "descripcion": "champi", 
+    "categoria": "gourmet",
+    "precio": 10,       
+    "imagen": "https://media.istockphoto.com/id/1276597176/es/foto/setas-de-bot%C3%B3n.jpg?s=612x612&w=0&k=20&c=YpiIusN1dPViMpVqXy-fO5SIQqFrQNujYdOsG_kir04="
+}
+###
+POST http://localhost:8080/productos HTTP/1.1
+content-type: application/json
+
+{
+    "descripcion": "eneldo", 
+    "categoria": "gourmet",
+    "precio": 20,       
+    "imagen": "https://media.istockphoto.com/id/188072795/es/foto/racimo-fresca-de-eneldo.jpg?s=612x612&w=0&k=20&c=0K9KYotl6hwg56HtrSjlL-kqG9eR5YFCLced3qcFD68="
+}
+
+###
+POST http://localhost:8080/productos HTTP/1.1
+content-type: application/json
+
+{
+    "descripcion": "menta", 
+    "categoria": "gourmet",
+    "precio": 30,       
+    "imagen": "https://media.istockphoto.com/id/1325980741/es/foto/menta-cruda-fresca-sobre-una-tabla-de-cortar-de-madera.jpg?s=612x612&w=0&k=20&c=ZzCRK9ipIKuR19awLC1vBul7OyzQyKd4FNM09l9X1ec="
+}

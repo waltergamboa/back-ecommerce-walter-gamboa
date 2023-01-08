@@ -5,27 +5,24 @@ const CarritosSchema = new mongoose.Schema({
     type: String,
     require: true,
     trim: true,
-    max: 50
+    max: 50,
   },
   fyh: {
     type: String,
     require: true,
     trim: true,
-    max: 20
+    max: 20,
   },
-    timestamp: {
-        type: Number,
-        require: true,
-    },            
-    direccionentrega: {
-      type: String,
-      require: true,
-      trim: true,
-      max: 150
-    },
-    items:[{
+  direccionentrega: {
+    type: String,
+    require: true,
+    trim: true,
+    max: 150,
+  },
+  items: [
+    {
       idproducto: {
-        type: Number,
+        type: String,
         require: true,
       },
       descripcion: {
@@ -37,14 +34,13 @@ const CarritosSchema = new mongoose.Schema({
       cantidad: {
         type: Number,
         require: true,
-      }
-    }]
-    });
-
+      },
+    },
+  ],
+});
 
 const Carritos = mongoose.model("Carritos", CarritosSchema);
 
 module.exports = {
-    Carritos
+  Carritos,
 };
-

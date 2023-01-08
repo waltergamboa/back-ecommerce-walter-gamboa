@@ -1,65 +1,79 @@
-const MensajeDto = require("../../models/DTOs/productos.dto");
 const { UsuariosApi } = require("../../services/usuarios/usuarios.service");
 
-class UsuariosController{
+class UsuariosController {
+  constructor() {
+    this.usuariosApi = new UsuariosApi();
+  }
 
-    constructor(){
-        this.usuariosApi = new UsuariosApi();
+  getTimestamp = () => {
+    return Date.now();
+  };
+
+  getAll = async (req, res) => {
+    try {
+      const datos = await this.usuariosApi.getAll();
+      res.json(datos);
+    } catch (error) {
+      res.json(error);
     }
+  };
 
-    getTimestamp = ()=>{
-        return Date.now();
-      }
-
-    getAll = async (req, res) => {
-       const datos = await this.usuariosApi.getAll();
-        res.json(datos)
+  getById = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const datos = await this.usuariosApi.getById(id);
+      res.json(datos);
+    } catch (error) {
+      res.json(error);
     }
+  };
 
-    getById = async (req, res) => {
-        const { id } = req.params;
-        const datos = await this.usuariosApi.getById(id);
-         res.json(datos)
-     }
+  save = async (req, res) => {
+    try {
+      const { name, email, password } = req.body;
 
+      //   const mensajeDto = new MensajeDto(nombre, descripcion, codigo, foto, precio, stock)
 
-    save = async (req, res)=>{
+      const obj = {
+        name,
+        email,
+        password,
+      };
 
-        const { name, email, password } = req.body;
+      const respuesta = await this.usuariosApi.save(obj);
 
-     //   const mensajeDto = new MensajeDto(nombre, descripcion, codigo, foto, precio, stock)
+      // sacar id
 
-        const obj = {
-            name, 
-            email, 
-            password
-          }
-
-        const respuesta = await this.usuariosApi.save(obj);
-
-        // sacar id
-
-        res.json(respuesta)
+      res.json(respuesta);
+    } catch (error) {
+      res.json(error);
     }
+  };
 
-    updateById = async (req, res)=>{
+  updateById = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const obj = req.body;
 
-        const { id } = req.params;
-        const obj = req.body;
+      const respuesta = await this.usuariosApi.updateById(id, obj);
 
-        const respuesta = await this.usuariosApi.updateById(id, obj);
+      // sacar id
 
-        // sacar id
-
-        res.json(respuesta)
+      res.json(respuesta);
+    } catch (error) {
+      res.json(error);
     }
+  };
 
-    deleteById = async (req, res) => {
-        const { id } = req.params;
-        const respuesta = await this.usuariosApi.deleteById(id);
-         res.json(respuesta)
-     }
-
+  deleteById = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const respuesta = await this.usuariosApi.deleteById(id);
+      res.json(respuesta);
+    } catch (error) {
+      res.json(error);
+    }
+  };
 }
 
-module.exports =  { UsuariosController };
+module.exports = { UsuariosController };

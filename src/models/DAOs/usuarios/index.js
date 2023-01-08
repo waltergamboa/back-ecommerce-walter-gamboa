@@ -1,29 +1,21 @@
-const { Usuarios } = require("../../usuarios.model")
+const { Usuarios } = require("../../usuarios.model");
+const config = require("../../../config/config");
 
 let usuariosDao;
 
-const opcion = process.env.TIPO_PERSISTENCIA;
+const opcion = config.TIPO_PERSISTENCIA;
 
-switch(opcion){
-    case "archivo":
-        const UsuariosDaoArchivo = require("./usuarios.dao.archivo");
-        usuariosDao = new UsuariosDaoArchivo("./src/data/usuarios.data.json");
-        break;
-    case "mongodb":
-        const UsuariosDaoMongoDB = require("./usuarios.dao.mongodb");
-        usuariosDao = UsuariosDaoMongoDB.getInstance("usuarios", Usuarios);
-        break;
-    // case "firebase":
-    //     const ProductosDaoFirebase  = require("../ProductosDaoFirebase");
-    //     productosDao = new ProductosDaoFirebase();
-    //     break;
-    // case "mariadb":
-    //     const ProductosDaoMariaDB = require("../ProductosDaoMariaDB");
-    //     productosDao = new ProductosDaoMariaDB();
-    //     break;        
-    default:
-        break;
-
+switch (opcion) {
+  case "archivo":
+    const UsuariosDaoArchivo = require("./usuarios.dao.archivo");
+    usuariosDao = new UsuariosDaoArchivo.getInstance("./src/data/usuarios.data.json");
+    break;
+  case "mongodb":
+    const UsuariosDaoMongoDB = require("./usuarios.dao.mongodb");
+    usuariosDao = UsuariosDaoMongoDB.getInstance("usuarios", Usuarios);
+    break;
+  default:
+    break;
 }
 
-module.exports = { usuariosDao }
+module.exports = { usuariosDao };

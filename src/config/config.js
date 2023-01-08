@@ -10,6 +10,8 @@ module.exports = {
     NODE_ENV: process.env.NODE_ENV || 'development',
     HOST: process.env.HOST || 'localhost',
     PORT: process.env.PORT || 8080,
+    COOKIE_MAX_AGE: process.env.COOKIE_MAX_AGE,
+    COOKIE_EXPIRES: process.env.COOKIE_EXPIRES,
     SESSION_SECRET: process.env.SESSION_SECRET || "secret",
     MONGO_DB: process.env.MONGO_DB,
     MAIL_ADMIN: process.env.MAIL_ADMIN || "waltergamboa@gmail.com",

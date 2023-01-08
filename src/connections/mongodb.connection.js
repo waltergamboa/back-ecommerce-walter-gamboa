@@ -1,16 +1,18 @@
 const mongoose = require("mongoose");
+const config = require("../config/config");
+const { logger, loggerWarn, loggerError } = require("../helpers/logger/logger");
 
 let instance = null;
 
 class ConnectMongoDb {
     constructor(){
-        ;( async () => {   const url = process.env.MONGO_DB;
+        ;( async () => {   const url = config.MONGO_DB;
             await mongoose.connect(url, {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
             })
-            console.log("aca")
-            console.log("MongoDB conectada")})();
+            logger.info("Se a la base %s", "mongodb");
+        })();
     }
 
     static getInstance(){

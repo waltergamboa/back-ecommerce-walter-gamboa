@@ -1,40 +1,29 @@
 const MongoDBContainer = require("../../Containers/mongodb.container");
-
-const mongoose = require("mongoose");
-const ConnectMongoDb = require("../../../connections/mongodb.connection")
-
+const { genericoDTO } = require("../../DTOs/generico.dto");
 let instance = null;
 
-class UsuariosDaoMongoDB extends MongoDBContainer{
-    constructor(coleccion, esquema){
-        super(coleccion, esquema)
-//        this.coleccion = coleccion;
-  //      this.esquema = esquema;
-  //      this.model = esquema; // mongoose.model(this.coleccion, this.esquema);
-        //this.connectDB();
-    //    ConnectMongoDb.getInstance();
+class UsuariosDaoMongoDB extends MongoDBContainer {
+  constructor(coleccion, esquema) {
+    super(coleccion, esquema);
+  }
 
-
+  static getInstance(colecion, esquema) {
+    if (!instance) {
+      instance = new UsuariosDaoMongoDB(colecion, esquema);
     }
 
-    static getInstance(colecion, esquema){
-        if(!instance){
-            instance = new UsuariosDaoMongoDB(colecion, esquema);
-        }
+    return instance;
+  }
 
-        return instance;
+  async save(document) {
+    try {
+      let documentNew = genericoDTO(document);
+      let documents = await super.save(documentNew);
+      return documents;
+    } catch (error) {
+      return error;
     }
-
-    async getByCategory(category){
-        try {
-            let documents = await this.model.find({categoria: category});
-            return documents;
-        } catch (error) {
-            console.log("Error al buscar los datos", error);
-            return [];
-        } 
-    }
-
+  }
 }
 
 module.exports = UsuariosDaoMongoDB;

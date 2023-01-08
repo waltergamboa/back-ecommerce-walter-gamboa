@@ -1,63 +1,75 @@
 const { OrdenesApi } = require("../../services/ordenes/ordenes.service");
 
-class OrdenesController{
+class OrdenesController {
+  constructor() {
+    this.ordenesApi = new OrdenesApi();
+  }
 
-    constructor(){
-        this.ordenesApi = new OrdenesApi();
+  getTimestamp = () => {
+    return Date.now();
+  };
+
+  getAll = async (req, res) => {
+    try {
+      const datos = await this.ordenesApi.getAll();
+      res.json(datos);
+    } catch (error) {
+      res.json(error);
     }
+  };
 
-    getTimestamp = ()=>{
-        return Date.now();
-      }
-
-    getAll = async (req, res) => {
-       const datos = await this.ordenesApi.getAll();
-        res.json(datos)
+  getById = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const datos = await this.ordenesApi.getById(id);
+      res.json(datos);
+    } catch (error) {
+      res.json(error);
     }
+  };
 
-    getById = async (req, res) => {
-        const { id } = req.params;
-        const datos = await this.ordenesApi.getById(id);
-         res.json(datos)
-     }
+  save = async (req, res) => {
+    try {
+      const { email, estado, items } = req.body;
 
-    save = async (req, res)=>{
+      const obj = {
+        email,
+        estado,
+        items: items,
+      };
 
-        const { email, estado, items } = req.body;
+      const respuesta = await this.ordenesApi.save(obj);
 
-        const obj = {
-            timestamp: this.getTimestamp(),
-            email,
-            estado,
-            fyh: this.getTimestamp(),
-            items: items
-          }
-
-        const respuesta = await this.ordenesApi.save(obj);
-
-        // sacar id
-
-        res.json(respuesta)
+      res.json(respuesta);
+    } catch (error) {
+      res.json(error);
     }
+  };
 
-    updateById = async (req, res)=>{
+  updateById = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const obj = req.body;
 
-        const { id } = req.params;
-        const obj = req.body;
+      const respuesta = await this.ordenesApi.updateById(id, obj);
 
-        const respuesta = await this.ordenesApi.updateById(id, obj);
+      // sacar id
 
-        // sacar id
-
-        res.json(respuesta)
+      res.json(respuesta);
+    } catch (error) {
+      res.json(error);
     }
+  };
 
-    deleteById = async (req, res) => {
-        const { id } = req.params;
-        const respuesta = await this.ordenesApi.deleteById(id);
-        res.json(respuesta)
-     }
-
+  deleteById = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const respuesta = await this.ordenesApi.deleteById(id);
+      res.json(respuesta);
+    } catch (error) {
+      res.json(error);
+    }
+  };
 }
 
-module.exports =  { OrdenesController };
+module.exports = { OrdenesController };

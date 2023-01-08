@@ -1,29 +1,21 @@
-const { Carritos } = require("../../carritos.model")
+const { Carritos } = require("../../carritos.model");
+const config = require("../../../config/config");
 
 let carritosDao;
 
-const opcion = process.env.TIPO_PERSISTENCIA;
+const opcion = config.TIPO_PERSISTENCIA;
 
-switch(opcion){
-    case "archivo":
-        const CarritosDaoArchivo = require("./carritos.dao.archivo");
-        carritosDao = new CarritosDaoArchivo("./src/data/carritos.data.json");
-        break;
-    case "mongodb":
-        const CarritosDaoMongoDB = require("./carritos.dao.mongodb");
-        carritosDao = CarritosDaoMongoDB.getInstance("carritos", Carritos);
-        break;
-    // case "firebase":
-    //     const ProductosDaoFirebase  = require("../ProductosDaoFirebase");
-    //     productosDao = new ProductosDaoFirebase();
-    //     break;
-    // case "mariadb":
-    //     const ProductosDaoMariaDB = require("../ProductosDaoMariaDB");
-    //     productosDao = new ProductosDaoMariaDB();
-    //     break;        
-    default:
-        break;
-
+switch (opcion) {
+  case "archivo":
+    const CarritosDaoArchivo = require("./carritos.dao.archivo");
+    carritosDao = new CarritosDaoArchivo.getInstance("./src/data/carritos.data.json");
+    break;
+  case "mongodb":
+    const CarritosDaoMongoDB = require("./carritos.dao.mongodb");
+    carritosDao = CarritosDaoMongoDB.getInstance("carritos", Carritos);
+    break;
+  default:
+    break;
 }
 
-module.exports = { carritosDao }
+module.exports = { carritosDao };

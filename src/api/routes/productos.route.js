@@ -11,7 +11,7 @@ class ProductosRouter{
     init(){
         this.router.get("/", this.productosController.getAll);
         this.router.get("/:id", this.productosController.getById);
-        this.router.get("/category/:category", this.productosController.getByCategory);        
+        this.router.get("/categoria/:category", this.productosController.getByCategory);        
         this.router.post("/", this.productosController.save)
         this.router.put("/:id", this.productosController.updateById)
         this.router.delete("/:id", this.productosController.deleteById)

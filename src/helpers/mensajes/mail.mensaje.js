@@ -25,13 +25,14 @@ const mailNuevoRegistro = async (username, email) => {
   }
 };
 
-const mailNuevaOrden = async (username, email) => {
+const mailNuevaOrden = async (username, email, obj) => {
   try {
+    const { orden } = obj;
     const info = await transporter.sendMail({
       from: "Backend Walter Gamboa",
       to: process.env.MAIL_ADMIN,
       subject: "Nueva Orden",
-      html: `<h1 style="color: blue;">Test Nueva Orden Se registro  usuario: ${username} </br></h1><h3>con el mail ${email}.</h3></br><span>Saludos...</span>`,
+      html: `<h1 style="color: blue;">Se registro una nueva orden con nro: ${orden} </br></h1><h3>con el mail ${obj.email}.</h3></br><span>Saludos...</span>`,
     });
     logger.info("Se envio un email a %s", process.env.MAIL_ADMIN);
     return null;

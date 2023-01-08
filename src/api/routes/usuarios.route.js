@@ -11,7 +11,6 @@ class UsuariosRouter{
     init(){
         this.router.get("/", this.usuariosController.getAll);
         this.router.get("/:id", this.usuariosController.getById);
-    //    this.router.get("/:category", this.usuariosController.getByCategory);        
         this.router.post("/", this.usuariosController.save)
         this.router.put("/:id", this.usuariosController.updateById)
         this.router.delete("/:id", this.usuariosController.deleteById)

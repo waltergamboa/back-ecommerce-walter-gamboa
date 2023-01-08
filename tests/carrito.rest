@@ -6,27 +6,25 @@ content-type: application/json
 
 {
     "email": "uno@gmail.com",
-    "direccionengrega": "direccion",
+    "direccionentrega": "direccion111",
     "items": [{
-    "idproducto": "1",
+    "idproducto": "63b9feb1f790136cc7464901",
     "descripcion": "manzana",
-    "cantidad": 10
+    "cantidad": 20
     }]
 }
 ###
-PUT http://localhost:8080/carrito/1 HTTP/1.1
+PUT http://localhost:8080/carrito/63bae2ecf5c5a986ea8db909 HTTP/1.1
 content-type: application/json
 
 {
-    "email": "uno@gmail.com",
-    "direccionengrega": "direccion12",
-    "items": [{
-    "idproducto": "1",
-    "descripcion": "manzana",
-    "cantidad": 10
-    }]
+    "direccionentrega": "direccion222"
 }
 ###
-DELETE http://localhost:8080/carrito/1 HTTP/1.1
+DELETE http://localhost:8080/carrito/63bae2ecf5c5a986ea8db909 HTTP/1.1
+############
+# items carrito
+############
+DELETE http://localhost:8080/carrito/63bae40d9b2428395683cfbe/63b9feb1f790136cc7464901 HTTP/1.1
 
 

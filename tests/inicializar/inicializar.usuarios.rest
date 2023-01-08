@@ -1,0 +1,11 @@
+POST http://localhost:8080/usuarios HTTP/1.1
+content-type: application/json
+
+{
+    "name": "admin",
+    "email": "admin@gmail.com", 
+    "password": "WMbPfWSuyJMTrUUD3ninDuXAJivF6e84pq6VheoKOByx8B8LcCrJm",
+    "direccion": "direccion admin",
+    "telefono": "1234-5678",
+    "admin": true
+}

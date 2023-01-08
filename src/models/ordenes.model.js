@@ -1,31 +1,32 @@
 const mongoose = require("mongoose");
 
 const OrdenesSchema = new mongoose.Schema({
+  orden: {
+    type: Number,
+    require: true,
+  },
   email: {
     type: String,
     require: true,
     trim: true,
-    max: 50
+    max: 50,
   },
   fyh: {
     type: String,
     require: true,
     trim: true,
-    max: 20
+    max: 20,
   },
-    timestamp: {
-        type: Number,
-        require: true,
-    },            
-    estado: {
-      type: String,
-      require: true,
-      trim: true,
-      max: 20
-    },
-    items:[{
+  estado: {
+    type: String,
+    require: true,
+    trim: true,
+    max: 20,
+  },
+  items: [
+    {
       idproducto: {
-        type: Number,
+        type: String,
         require: true,
       },
       descripcion: {
@@ -42,13 +43,12 @@ const OrdenesSchema = new mongoose.Schema({
         type: Number,
         require: true,
       },
-    }]
-    });
-
+    },
+  ],
+});
 
 const Ordenes = mongoose.model("Ordenes", OrdenesSchema);
 
 module.exports = {
-    Ordenes
+  Ordenes,
 };
-

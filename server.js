@@ -1,19 +1,13 @@
-/* ------------------------------- constantes ------------------------------- */
+// Constantes
 const { Server: ServerHttp } = require("http");
 const { Server: ServerIo } = require("socket.io");
-
 const config = require("./src/config/config")
-
 const app = require("./src/app");
-
-
-
 const HttpServer = new ServerHttp(app);
 const io = new ServerIo(HttpServer);
-
-
 const { MensajesApi } = require("./src/services/mensajes/mensajes.service");
 const mensajesApi = new MensajesApi();
+const { logger, loggerWarn, loggerError } = require("./src/helpers/logger/logger");
 
 const getMessages = async ()=>{
   const mensajes = await mensajesApi.getAll();
@@ -32,14 +26,8 @@ const saveMessages = async (mail, tipo, mensaje)=>{
     cuerpomensaje: mensaje
   }
 
-  
-
   const retorno = await mensajesApi.save(obj);
-
-  console.log(retorno)
-
   return retorno
-
 }
 
 const generarFechaHora = ()=>{
@@ -55,26 +43,9 @@ const generarFechaHora = ()=>{
   return fechaStr;
 }
 
-
 io.on("connection", async (socket) => {
-//  socket.emit("mensaje-productos", getProducts());
 
-
-  socket.emit("mensaje-chat", await getMessages().then((data)=>data));
-
-
-  //socket.emit("mensaje-chat", await getMyMessages(user.email).then((data)=>data));
-
-  // socket.on("producto-nuevo", async (producto)=>{
-  //   const contenedor = new Contenedor("./src/persistencias/archivos/productos.txt");
-  //   const { nombre, precio, imagen } = producto;
-  //   const id = await contenedor.save({
-  //     nombre,
-  //     precio,
-  //     imagen,
-  //   });
-  //   io.sockets.emit("mensaje-productos",  getProducts())
-  // })
+socket.emit("mensaje-chat", await getMessages().then((data)=>data));
 
   socket.on("chat-nuevo", async (chat)=>{
     const { mail, tipo, mensaje } = chat;
@@ -84,22 +55,9 @@ io.on("connection", async (socket) => {
   })
 });
 
-
-// chat
-
-const { logger, loggerWarn, loggerError } = require("./src/helpers/logger/logger");
-
-
-const formDate = (time) => {
-  const date = new Date(time);
-  return date.toLocaleDateString();
-}
-
 /* -------------------------------------------------------------------------- */
 /*                                   server                                   */
 /* -------------------------------------------------------------------------- */
-//const PORT = process.env.PORT || 8080;
-
 const server = HttpServer.listen(config.PORT, () => {
   logger.info("Servidor express escuchando en el puerto %s", config.PORT);
 });

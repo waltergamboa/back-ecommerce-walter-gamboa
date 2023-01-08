@@ -30,7 +30,7 @@ const renderMensajes = (chat) => {
     html2 = html2 + `<tr>`;
     html2 = html2 + `<td class="mensajeMail">${item.email}</td>`;
     html2 = html2 + `<td class="mensajeFechaHora">${item.fyh}</td>`;
-    html2 = html2 + `<td class=${(item.tipo == "usuarios") ? "mensajeTexto" : ""}>${item.cuerpomensaje}</td>`;
+    html2 = html2 + `<td class=${(item.tipo === "usuarios") ? "mensajeTexto" : "mensajeNormal"}>${item.cuerpomensaje}</td>`;
     if (admin == "true")
     html2 = html2 + `<td><input type="radio" id='optradio' name="optradio" value=${item.email} onClick=cambioMail(this)></td>`;
     
@@ -49,11 +49,6 @@ const agregarChat = (evt) => {
     const mail = document.querySelector("#mail").value;
     const mensaje = document.querySelector("#cuerpomensaje").value;
 
-   // const optradio = document.querySelector("#optradio").selected;
-
-
-  //  console.log(optradio)
-
     const tipo = (admin == "true") ? "sistema" : "usuarios";
 
     const chat = { mail, tipo, mensaje };
@@ -62,7 +57,6 @@ const agregarChat = (evt) => {
 
     document.querySelector("#cuerpomensaje").value = "";
     document.querySelector("#cuerpomensaje").focus();
-    return false;
   } catch (error) {
     console.log(error);
   }

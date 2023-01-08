@@ -13,7 +13,9 @@ class CarritosRouter{
         this.router.get("/:id", this.carritosController.getById);
         this.router.post("/", this.carritosController.save)
         this.router.put("/:id", this.carritosController.updateById)
-        this.router.delete("/:id", this.carritosController.deleteById)        
+        this.router.put("/:id/:idProduct", this.carritosController.updateItem)               
+        this.router.delete("/:id", this.carritosController.deleteById) 
+        this.router.delete("/:id/:idProduct", this.carritosController.deleteItem)               
 
         return this.router;
     }

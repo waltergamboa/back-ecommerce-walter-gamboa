@@ -5,15 +5,33 @@
 Hola Fede
 La verdad me falta tiempo, pense que no iba a ser complicado, si bien son cosas que vimos me costo ordenar y agregar las funcionalidades que pedian. Trate de cumplir con la mayoria de las consignas.
 jwt no use ya tenia armado todo para passport local. pug y handlebars tampoco, me decante por ejs y todo lo habia hecho con eso. No queria usar otra cosa.
+
+
 No pude hacer front, me hubiera gustado seguir el proyecto de React que curse con vos, el de la huerta a tu mesa y sumar las apis. O sino con html puro.
+
+
 Pero modularizar, ordenar, etc. me llevo mas de lo pensado. Con un front se podia enlazar mejor todo esto, hacer mas validaciones, etc.
+
+
 Estan los archivos .rest para testear. Dejo algunos registros segun las pruebas.
+
+
 Fui probando lo mas que pude, las apis, los mails, subir imagenes, etc. Seguro que algo me falta o se me paso. Pero en general estan funcionando.
+
+
 Trate de profundizar en clases, singleton, objetos, capas, loggers, etc.
+
+
 Como le habia comentado a Martin, mi tutor, me dio muchos errores, todo sirvio para entender, buscar informacion, solucionar, practicar. Desde ese punto de vista en lo personal me sirvio muchisimo.
+
+
 Fijate en los config cambiar el mail asi te llegan a vos cuando se haga un nuevo registro y una nueva orden.
+
+
 En los config esta development, se puede cambiar y cambia a persistencia archivo. Fui probando algunas cosas ahi, quizas no funcione todo ya que me concentre en mongodb.
 Pero esta eso segun la consigna solicitada.
+
+
 La base esta en mongo atlas.
 
 Ya hay 2 usuarios:

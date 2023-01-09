@@ -1,1 +1,3 @@
 {"level":30,"time":1673221311009,"pid":9980,"hostname":"NB-006041","msg":"Se a la base mongodb"}
+{"level":30,"time":1673223853828,"pid":2692,"hostname":"NB-006041","msg":"Servidor express escuchando en el puerto 8080"}
+{"level":30,"time":1673223854575,"pid":2692,"hostname":"NB-006041","msg":"Se a la base mongodb"}

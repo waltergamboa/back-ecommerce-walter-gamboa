@@ -4,7 +4,7 @@ const {
   postUploadFile,
   postUploadFiles,
 } = require("../controllers/upload.controller");
-const { uploadSingle, uploadMulti } = require("../controllers/upload");
+const { uploadSingle, uploadMulti } = require("../../middlewares/upload/upload.middleware");
 
 const routerUploads = Router();
 

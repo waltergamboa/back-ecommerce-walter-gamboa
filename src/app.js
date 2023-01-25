@@ -14,12 +14,16 @@ const { AccesoRouter } = require("./api/routes/acceso.route");
 const { ConfiguracionRouter } = require("./api/routes/configuracion.route");
 const { ArchivosRouter } = require("./api/routes/archivos.route");
 const routerUploads = require("./api/routes/upload.route");
+
 // session
 const session = require("express-session");
+
 // mongo
 const MongoStore = require("connect-mongo");
+
 // passport
-const {passport, checkAuth } = require("./middlewares/passport/passport.middleware");
+const { passport } = require("./middlewares/passport/passport.middleware");
+
 // configuracion
 const mongoConfig = {
   useNewUrlParser: true,
@@ -74,7 +78,5 @@ app.use("/chat", chatRouter.init());
 app.use("/config", configuracionRouter.init());
 app.use("/archivos", archivosRouter.init());
 app.use("/uploads", routerUploads);
-
-
 
 module.exports = app;

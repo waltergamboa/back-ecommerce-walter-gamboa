@@ -15,32 +15,25 @@ class AccesoRouter {
   init() {
     this.router.get("/", checkAuth, this.accesoController.raiz);
     this.router.get("/login", this.accesoController.login);
-    this.router.get("/signup", checkAuth, this.accesoController.signup);
-    this.router.get(
-      "/error_login",
-      checkAuth,
-      this.accesoController.errorLogin
-    );
-    this.router.get(
-      "/error_signup",
-      checkAuth,
-      this.accesoController.errorSignup
-    );
+    this.router.get("/signup", this.accesoController.signup);
+    this.router.get("/error_login", this.accesoController.errorLogin);
+    this.router.get("/error_signup", this.accesoController.errorSignup);
     this.router.post(
       "/login",
       passport.authenticate("login", {
         successRedirect: "/",
-        failureRedirect: "/error_login",
-      })
+        failureRedirect: "error_login",
+      }), this.accesoController.postLogin
     );
     this.router.post(
       "/signup",
       passport.authorize("signup", {
-        successRedirect: "pages/login",
-        failureRedirect: "pages/error_signup",
-      })
+        successRedirect: "/",
+        failureRedirect: "error_signup",
+      }), this.accesoController.postSignup
     );
-    this.router.post("/logout", checkAuth, this.accesoController.logout);
+    this.router.post("/logout", this.accesoController.logout);
+
     return this.router;
   }
 }

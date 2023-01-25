@@ -13,6 +13,7 @@ class AccesoController {
     try {
       res.render("pages/login");
     } catch (error) {
+      console.log({error})
       res.json(error);
     }
   };

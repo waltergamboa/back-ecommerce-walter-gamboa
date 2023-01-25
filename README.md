@@ -79,7 +79,7 @@ Trae los usuarios.
 
 Trae la info de la configuracion actual.
 
-## /uploads
+## /archivos
 
 Se pueden subir una o varias usando multer a la carpeta uploads.
 

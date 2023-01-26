@@ -1,27 +1,12 @@
 // passport
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const bcrypt = require("bcrypt");
+// bcrypt
+const { isValidPassword, createHash } = require("../../helpers/bcrypt/bcrypt");
 // modelo usuarios
 const { Usuarios } = require("../../models/usuarios.model");
 // mensajes
 const { mailNuevoRegistro } = require("../../helpers/mensajes/mail.mensaje");
-
-const isValidPassword = (user, password) => {
-  return bcrypt.compareSync(password, user.password);
-};
-
-const createHash = (password) => {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
-};
-
-const checkAuth = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res.redirect("login");
-  }
-};
 
 passport.use(
   "login",
@@ -84,4 +69,4 @@ passport.deserializeUser(async (id, done) => {
   done(null, user);
 });
 
-module.exports = { passport, checkAuth };
+module.exports = { passport };

@@ -3,7 +3,7 @@ const { Router } = express;
 const {
   ConfiguracionController,
 } = require("../controllers/configuracion.controller");
-const { checkAuth } = require("../../middlewares/passport/passport.middleware");
+const { checkAuth } = require("../../middlewares/auth/auth.middleware");
 
 class ConfiguracionRouter {
   constructor() {

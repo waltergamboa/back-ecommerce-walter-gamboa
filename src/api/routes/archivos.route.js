@@ -1,7 +1,8 @@
 const express = require("express");
 const { Router } = express;
 const { ArchivosController } = require("../controllers/archivos.controller");
-const { checkAuth } = require("../../middlewares/passport/passport.middleware");
+const { checkAuth } = require("../../middlewares/auth/auth.middleware");
+
 
 class ArchivosRouter {
   constructor() {

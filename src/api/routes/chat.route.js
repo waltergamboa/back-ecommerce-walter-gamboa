@@ -1,7 +1,7 @@
 const express = require("express");
 const { Router } = express;
 const { ChatController } = require("../controllers/chat.controller");
-const { checkAuth } = require("../../middlewares/passport/passport.middleware");
+const { checkAuth } = require("../../middlewares/auth/auth.middleware");
 
 class ChatRouter {
   constructor() {

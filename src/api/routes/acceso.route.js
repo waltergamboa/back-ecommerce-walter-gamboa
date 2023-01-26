@@ -1,10 +1,8 @@
 const express = require("express");
 const { Router } = express;
 const { AccesoController } = require("../controllers/acceso.controller");
-const {
-  passport,
-  checkAuth,
-} = require("../../middlewares/passport/passport.middleware");
+const { passport } = require("../../middlewares/passport/passport.middleware");
+const { checkAuth } = require("../../middlewares/auth/auth.middleware");
 
 class AccesoRouter {
   constructor() {
@@ -23,14 +21,16 @@ class AccesoRouter {
       passport.authenticate("login", {
         successRedirect: "/",
         failureRedirect: "error_login",
-      }), this.accesoController.postLogin
+      }),
+      this.accesoController.postLogin
     );
     this.router.post(
       "/signup",
       passport.authorize("signup", {
         successRedirect: "/",
         failureRedirect: "error_signup",
-      }), this.accesoController.postSignup
+      }),
+      this.accesoController.postSignup
     );
     this.router.post("/logout", this.accesoController.logout);
 

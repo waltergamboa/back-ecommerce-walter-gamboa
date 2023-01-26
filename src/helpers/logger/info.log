@@ -366,3 +366,23 @@
 {"level":30,"time":1674674857217,"pid":12824,"hostname":"NB-006041","msg":"Se a la base mongodb"}
 {"level":30,"time":1674674925444,"pid":12824,"hostname":"NB-006041","msg":"Se envio un email a waltergamboa@gmail.com"}
 {"level":30,"time":1674676177282,"pid":12824,"hostname":"NB-006041","msg":"Se envio un email a waltergamboa@gmail.com"}
+{"level":30,"time":1674733897677,"pid":4704,"hostname":"NB-006041","msg":"Servidor express escuchando en el puerto 8080"}
+{"level":30,"time":1674733899509,"pid":4704,"hostname":"NB-006041","msg":"Se a la base mongodb"}
+{"level":30,"time":1674733983256,"pid":1620,"hostname":"NB-006041","msg":"Servidor express escuchando en el puerto 8080"}
+{"level":30,"time":1674733985045,"pid":1620,"hostname":"NB-006041","msg":"Se a la base mongodb"}
+{"level":30,"time":1674734115977,"pid":23876,"hostname":"NB-006041","msg":"Servidor express escuchando en el puerto 8080"}
+{"level":30,"time":1674734118995,"pid":23876,"hostname":"NB-006041","msg":"Se a la base mongodb"}
+{"level":30,"time":1674734140537,"pid":8768,"hostname":"NB-006041","msg":"Servidor express escuchando en el puerto 8080"}
+{"level":30,"time":1674734141272,"pid":8768,"hostname":"NB-006041","msg":"Se a la base mongodb"}
+{"level":30,"time":1674734145262,"pid":24340,"hostname":"NB-006041","msg":"Servidor express escuchando en el puerto 8080"}
+{"level":30,"time":1674734145997,"pid":24340,"hostname":"NB-006041","msg":"Se a la base mongodb"}
+{"level":30,"time":1674734225394,"pid":22260,"hostname":"NB-006041","msg":"Servidor express escuchando en el puerto 8080"}
+{"level":30,"time":1674734226324,"pid":22260,"hostname":"NB-006041","msg":"Se a la base mongodb"}
+{"level":30,"time":1674734307921,"pid":18896,"hostname":"NB-006041","msg":"Servidor express escuchando en el puerto 8080"}
+{"level":30,"time":1674734308851,"pid":18896,"hostname":"NB-006041","msg":"Se a la base mongodb"}
+{"level":30,"time":1674734355864,"pid":16268,"hostname":"NB-006041","msg":"Servidor express escuchando en el puerto 8080"}
+{"level":30,"time":1674734356580,"pid":16268,"hostname":"NB-006041","msg":"Se a la base mongodb"}
+{"level":30,"time":1674734417839,"pid":14212,"hostname":"NB-006041","msg":"Servidor express escuchando en el puerto 8080"}
+{"level":30,"time":1674734419488,"pid":14212,"hostname":"NB-006041","msg":"Se a la base mongodb"}
+{"level":30,"time":1674734511495,"pid":24444,"hostname":"NB-006041","msg":"Servidor express escuchando en el puerto 8080"}
+{"level":30,"time":1674734512470,"pid":24444,"hostname":"NB-006041","msg":"Se a la base mongodb"}
